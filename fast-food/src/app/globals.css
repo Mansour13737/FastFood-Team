@@ -1,2 +1,14 @@
+
 @import "tailwindcss";
 
+@font-face{
+    font-family:"Lobster" ;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../../public/fonts/Lobster-Regular.ttf");
+}
+
+@theme inline {
+    --font-lobster:'Lobster'
+}
