@@ -1,15 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
 import Button from "@/components/Button"
-import {products} from '../data/products'
+import { products } from '../data/products'
 import ProductTitle from "@/components/ProductTitle"
 interface Product {
-  id: number    
+  id: number
   title: string
   description: string
   price: number
   star: number
-  image: string         
+  image: string
 }
 
 
@@ -20,10 +20,10 @@ export default function Main() {
     <div className="h-screen w-full bg-white flex flex-col relative items-center px-4 overflow-hidden">
       <h2 className="font-normal font-lobster absolute text-[35px] text-[#3C2F2F] top-[28px] left-[19px]">Foodgo</h2>
       <p className="absolute tracking-tighter top-[89px] left-[19px] text-[15px] text-[#6A6A6A]">Order your favourite food <b className="text-[15px]">!</b></p>
-      <Image src={'/profile-photo.jpg'} width={70} height={70} alt="Pic"  className="absolute top-[28px] right-[19px]"/>
+      <Image src={'/profile-photo.jpg'} width={70} height={70} alt="Pic" className="absolute top-[28px] right-[19px]" />
       <div className="flex h-fit w-full  mt-[140px] items-center justify-between">
         <input type="text" className="shadow-[0.5px_0.5px_0.5px_0.5px_rgba(0,0,0,0.3)] h-[40px] w-[80%] rounded-[15px] " />
-        <svg className="bg-[url('/setting.svg')] bg-contain bg-no-repeat bg-center w-[45px] h-[45px] "/>
+        <svg className="bg-[url('/setting.svg')] bg-contain bg-no-repeat bg-center w-[45px] h-[45px] " />
       </div>
       <div className="mt-8 flex gap-1">
         <Button color="bg-[#EF2A39] text-white">All</Button>
@@ -32,8 +32,8 @@ export default function Main() {
         <Button>Hot</Button>
       </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-[5px] w-full mt-3 mb-[100px] text-[#3C2F2F]">
-        {products.map((item : Product,key) => (
-         <ProductTitle info={item} key={key} />
+        {products.map((item: Product, key) => (
+          <ProductTitle info={item} key={key} />
         ))}
       </div>
       <div className="w-full h-screen">
