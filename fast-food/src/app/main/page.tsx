@@ -17,7 +17,7 @@ interface Product {
 export default function Main() {
 
   return (
-    <div className="h-screen w-full bg-white flex flex-col relative items-center px-4 overflow-hidden">
+    <div className="h-screen w-full bg-white flex flex-col relative items-center px-4">
       <h2 className="font-normal font-lobster absolute text-[35px] text-[#3C2F2F] top-[28px] left-[19px]">Foodgo</h2>
       <p className="absolute tracking-tighter top-[89px] left-[19px] text-[15px] text-[#6A6A6A]">Order your favourite food <b className="text-[15px]">!</b></p>
       <Image src={'/profile-photo.jpg'} width={70} height={70} alt="Pic" className="absolute top-[28px] right-[19px]" />
@@ -31,14 +31,14 @@ export default function Main() {
         <Button>Spicy</Button>
         <Button>Hot</Button>
       </div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-[5px] w-full mt-3 mb-[100px] text-[#3C2F2F]">
+      <div className="grid grid-cols-2 grid-rows-2 gap-[5px] w-full mt-3 mb-[120px] text-[#3C2F2F]">
         {products.map((item: Product, key) => (
           <ProductTitle info={item} key={key} />
         ))}
       </div>
       <div className="w-full h-screen">
       </div>
-      <div className="fixed bottom-0 left-0 right-0 bg-[url('/main-footer.png')] bg-cover bg-center w-full h-[50px] justify-between flex">
+      <div className="fixed bottom-0 left-0 right-0 bg-[url('/main-footer.png')] bg-cover bg-center bg-no-repeat w-full h-[50px] justify-between flex z-50">
         <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
           <Link href={'/'} className="w-fit h-fit">
             <Image src={'/home.png'} alt="home" width={17} height={17} />
@@ -56,7 +56,7 @@ export default function Main() {
           </Link>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center items-center absolute mx-auto bottom-4">
+      <div className="w-full h-fit flex justify-center items-center absolute mx-auto bottom-5">
         <Link href={'/'}>
           <Image src={'/plus.png'} width={80} height={80} alt="plus" />
         </Link>
