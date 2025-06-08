@@ -56,7 +56,7 @@ export default function Main() {
           </Link>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center items-center absolute mx-auto bottom-5">
+      <div className="w-full h-fit flex justify-center items-center absolute mx-auto bottom-15">
         <Link href={'/'}>
           <Image src={'/plus.png'} width={80} height={80} alt="plus" />
         </Link>
