@@ -44,29 +44,31 @@ export default function Main() {
         </div>
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-[url('/main-footer.png')] bg-cover bg-center bg-no-repeat w-full h-[50px] justify-between flex z-50">
-        <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
-          <Link href={'/'} className="w-fit h-fit">
-            <Image src={'/home.png'} alt="home" width={17} height={17} />
-          </Link>
-          <Link href={'/'} className="w-fit h-fit">
-            <Image src={'/user.png'} alt="home" width={17} height={17} />
-          </Link>
-        </div>
-        <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
-          <Link href={'/'} className="w-fit h-fit">
-            <Image src={'/comment.png'} alt="home" width={17} height={17} />
-          </Link>
-          <Link href={'/'} className="w-fit h-fit">
-            <Image src={'/heart.png'} alt="home" width={17} height={17} />
-          </Link>
-        </div>
-      </footer>
+      <div className="fixed bottom-0 left-0 right-0 z-50">
+        <footer className="bg-[url('/main-footer.png')] bg-cover bg-center bg-no-repeat w-full h-[50px] justify-between flex">
+          <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
+            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+              <Image src={'/home.png'} alt="home" width={17} height={17} />
+            </Link>
+            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+              <Image src={'/user.png'} alt="home" width={17} height={17} />
+            </Link>
+          </div>
+          <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
+            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+              <Image src={'/comment.png'} alt="home" width={17} height={17} />
+            </Link>
+            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+              <Image src={'/heart.png'} alt="home" width={17} height={17} />
+            </Link>
+          </div>
+        </footer>
 
-      <div className="w-full h-fit flex justify-center items-center fixed mx-auto bottom-[15px] z-50">
-        <Link href={'/'}>
-          <Image src={'/plus.png'} width={80} height={80} alt="plus" />
-        </Link>
+        <div className="w-full h-fit flex justify-center items-center mx-auto bottom-[15px] absolute">
+          <Link href={'/'} className="relative z-[60]">
+            <Image src={'/plus.png'} width={80} height={80} alt="plus" />
+          </Link>
+        </div>
       </div>
     </div>
   )
