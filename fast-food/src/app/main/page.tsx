@@ -63,7 +63,7 @@ export default function Main() {
         </div>
       </footer>
 
-      <div className="w-full h-fit flex justify-center items-center fixed mx-auto bottom-[70px] z-50">
+      <div className="w-full h-fit flex justify-center items-center fixed mx-auto bottom-[15px] z-50">
         <Link href={'/'}>
           <Image src={'/plus.png'} width={80} height={80} alt="plus" />
         </Link>
