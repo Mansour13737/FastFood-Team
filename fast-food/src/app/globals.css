@@ -8,7 +8,34 @@
     font-display: swap;
     src: url("../../public/fonts/Lobster-Regular.ttf");
 }
+@font-face{
+    font-family:"Roboto-italic" ;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../../public/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf");
+}
+@font-face{
+    font-family:"Roboto" ;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../../public/fonts/Roboto-VariableFont_wdth,wght.ttf");
+}
 
 @theme inline {
     --font-lobster:'Lobster'
+    --font-roboto:'Roboto'
+}
+
+
+.custom-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white; /* رنگ دایره */
+  border: 2px solid red; /* رنگ حاشیه */
+  border-radius: 50%;
+  cursor: pointer;
 }
