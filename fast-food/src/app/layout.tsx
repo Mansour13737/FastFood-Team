@@ -2,7 +2,25 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Lobster } from 'next/font/google'
 import GlobalLoading from "@/components/GlobalLoading";
-import { metadata } from './metadata';
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Foodgo - Order your favourite food",
+  description: "Order your favourite food with Foodgo",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: '#ffffff',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Foodgo',
+  },
+};
 
 const lobster = Lobster({
   weight: '400',
@@ -20,8 +38,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-
 
 export default function RootLayout({
   children,
