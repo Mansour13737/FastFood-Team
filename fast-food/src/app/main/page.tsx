@@ -12,8 +12,6 @@ interface Product {
   image: string
 }
 
-
-
 export default function Main() {
 
   return (
