@@ -23,8 +23,8 @@
 }
 
 @theme inline {
-    --font-lobster:'Lobster'
-    --font-roboto:'Roboto'
+    --font-lobster:'Lobster';
+    --font-roboto:'Roboto';
 }
 
 
