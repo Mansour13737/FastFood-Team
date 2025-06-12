@@ -45,9 +45,8 @@ export default function ItemSlider({ title, items }: Props) {
                   <span className="text-sm font-medium">{item.name}</span>
                   <button
                     onClick={() => toggleItem(item.id)}
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-all duration-200 ${
-                      isActive ? 'bg-green-500' : 'bg-red-500'
-                    }`}
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-all duration-200 ${isActive ? 'bg-green-500' : 'bg-red-500'
+                      }`}
                   >
                     {isActive ? '✓' : '+'}
                   </button>

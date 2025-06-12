@@ -1,7 +1,9 @@
 import QtyButton from '@/components/QtyButton'
 import Image from "next/image"
-// import CustomStuff from '@/components/CustomStuff'
-// import { customStaff } from '@/data/products'
+import { customStaff } from '../data/products'
+import { customStaff2 } from '../data/products'
+import CustomStuff from '@/components/CustomStuff'
+import OrderButton from '@/components/OrderButton'
 
 export default function Customize() {
     return (
@@ -36,11 +38,22 @@ export default function Customize() {
                 <div className='flex justify-start'>
                     <span className='font-semibold'>Toppings</span>
                 </div>
-                <div className='w-full flex justify-around gap-1 mt-[10px]'>
-                    {/* {customStaff.map((item,index) => (
-                        <CustomStuff prp={item} key={index}/> */}
-                    {/* ))} */}
+                <div className='w-full flex flex-col  justify-around gap-3 mt-[10px]'>
+                    <div className='flex gap-1'>
+                        {customStaff.map((item) => (
+                            <CustomStuff item={item} key={item.id} />
+                        ))}
+                    </div>
+                    <div className='flex gap-1'>
+                        {customStaff2.map((item) => (
+                            <CustomStuff item={item} key={item.id} />
+                        ))}
+                    </div>
                 </div>
+            <div className='flex justify-center w-full gap-1 items-center mt-4'>
+                <span className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3'>$</span>
+                <OrderButton />
+            </div>
             </div>
         </div>
     )

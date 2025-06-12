@@ -4,15 +4,14 @@ import OrderButton from '@/components/OrderButton'
 import QtyButton from '@/components/QtyButton'
 import SearchButton from '@/components/SearchButton'
 import VectorLeft from '@/components/VectorLeft'
+import Link from 'next/link'
 
-// تعریف نوع Props با در نظر گرفتن Promise
 type Props = {
   params: Promise<{ id: string }>
 }
 
-// استفاده از async برای مدیریت Promise
 export default async function ProductPage({ params }: Props) {
-  // رفع Promise برای دسترسی به id
+
   const { id } = await params
   const product: Product | undefined = products.find((p) => p.id === Number(id))
 
@@ -70,7 +69,9 @@ export default async function ProductPage({ params }: Props) {
         <div>
           <div className='flex justify-center gap-3 items-center mb-4'>
             <span className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3'>${product.price.toFixed(2)}</span>
+            <Link href={'/customize'}  className='w-full'>
             <OrderButton />
+            </Link>
           </div>
         </div>
       </div>

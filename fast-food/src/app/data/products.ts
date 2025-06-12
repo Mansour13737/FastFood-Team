@@ -7,6 +7,54 @@ export interface Product {
   image: string         
 }
 
+export const customStaff = [
+  {
+    id : 1,
+    title : 'Tomato',
+    img : '/tomato.svg'
+  },
+   {
+    id : 2,
+    title : 'Onion',
+    img : '/onion.svg'
+  },
+   {
+    id : 3,
+    title : 'Pickles',
+    img : '/pickles.svg'
+  },
+   {
+    id : 4,
+    title : 'Bacons',
+    img : '/bacons.svg'
+  },
+]
+
+export const customStaff2 = [
+  {
+    id : 1,
+    title : 'Fries',
+    img : '/fries.svg'
+  },
+   {
+    id : 2,
+    title : 'Coleslaw',
+    img : '/coleslaw.svg'
+  },
+   {
+    id : 3,
+    title : 'Salad',
+    img : '/salad.svg'
+  },
+   {
+    id : 4,
+    title : 'Onion',
+    img : '/onion2.svg'
+  },
+]
+
+
+
 
 export const products: Product[] = [
   {
