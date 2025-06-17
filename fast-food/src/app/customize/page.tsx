@@ -6,7 +6,7 @@ import CustomStuff from '@/components/CustomStuff'
 import OrderButton from '@/components/OrderButton'
 import { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
-
+import Link from 'next/link'
 export default function Customize() {
 
     const {customStaff,customStaff2} = useContext(AppContext)
@@ -39,7 +39,7 @@ export default function Customize() {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col w-full pl-[15px] mt-[35px]'>
+            <div className='flex flex-col w-full pl-[15px] mt-[15px]'>
                 <div className='flex justify-start'>
                     <span className='font-semibold'>Toppings</span>
                 </div>
@@ -55,9 +55,11 @@ export default function Customize() {
                         ))}
                     </div>
                 </div>
-            <div className='flex justify-center w-full gap-1 items-center mt-4'>
-                <span className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3'>$</span>
+            <div className='flex justify-center w-full items-center gap-3 mt-4 '>
+                <span className='text-[11px] text-white bg-[#EF2A39] w-fit font-bold rounded-lg p-3'>$18</span>
+                <Link href={'/payment'} className='w-full flex justify-center items-center'>
                 <OrderButton />
+                </Link>
             </div>
             </div>
         </div>

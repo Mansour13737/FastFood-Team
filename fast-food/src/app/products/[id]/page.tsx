@@ -76,7 +76,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
           {/* price & order */}
           <div>
-            <div className='flex justify-center gap-3 items-center mb-4'>
+            <div className='flex justify-center gap-3 items-center mb-4 '>
               <span className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3'>${product.price.toFixed(2)}</span>
               <Link href={'/customize'} className='w-full'>
                 <OrderButton />
