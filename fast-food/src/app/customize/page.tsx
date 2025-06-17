@@ -1,13 +1,18 @@
+'use client'
+
 import QtyButton from '@/components/QtyButton'
 import Image from "next/image"
-import { customStaff } from '../data/products'
-import { customStaff2 } from '../data/products'
 import CustomStuff from '@/components/CustomStuff'
 import OrderButton from '@/components/OrderButton'
+import { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
 
 export default function Customize() {
+
+    const {customStaff,customStaff2} = useContext(AppContext)
+
     return (
-        <div className='w-full h-screen pt-[70px] pr-[15px] overflow-x-hidden'>
+        <div className='w-full h-screen pt-[10px] pr-[15px] overflow-x-hidden'>
             <div className="flex justify-between w-full gap-[25px]">
                 <div className='w-full  content-center'>
                     <Image src={'/customize.jpg'} width={240} height={297} alt="customize" />
@@ -39,12 +44,12 @@ export default function Customize() {
                     <span className='font-semibold'>Toppings</span>
                 </div>
                 <div className='w-full flex flex-col  justify-around gap-3 mt-[10px]'>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 justify-center items-center'>
                         {customStaff.map((item) => (
                             <CustomStuff item={item} key={item.id} />
                         ))}
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 justify-center items-center'>
                         {customStaff2.map((item) => (
                             <CustomStuff item={item} key={item.id} />
                         ))}

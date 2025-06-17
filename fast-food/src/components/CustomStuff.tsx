@@ -1,6 +1,8 @@
 'use client'
 import { useState } from "react";
 
+
+
 interface Items {
     id: number;
     title: string;
@@ -15,7 +17,7 @@ export default function CustomStuff({ item }: { item: Items }) {
         setIsChoosed(!isChoosed)
     }
     return (
-        <div className="w-[80px] h-fit flex flex-col bg-[#3C2F2F] items-center justify-start rounded-[8px]  text-white p-1">
+        <div className="w-[80px] pb-2 flex flex-col bg-[#3C2F2F] items-center justify-start rounded-[8px]  text-white p-1">
             <div className="bg-white w-full rounded-[5px] flex justify-center items-center">
                 <div
                     className="w-[50px] h-[40px] bg-no-repeat bg-contain bg-center"
@@ -23,8 +25,8 @@ export default function CustomStuff({ item }: { item: Items }) {
                 ></div>
             </div>
             <div className="text-[10px] text-center mt-1 ">{item.title}</div>
-            <div onClick={chooseHndler}>
-                <span className={isChoosed?`bg-red-500 p-1 rounded-full h-[18px] w-[18px] flex justify-center items-center` :"bg-green-500 p-1 h-[18px] w-[18px] rounded-full flex justify-center items-center" }>{isChoosed ? "+" : "✓"}</span>
+            <div onClick={chooseHndler} className="mt-1">
+                <span className={isChoosed?`bg-red-500 p-1 rounded-full h-[18px] w-[18px] flex justify-center items-center pb-[5px] text-center pl-[4px] text-[13px] transition-all duration-100 ` :"bg-green-500 p-1 h-[18px] w-[18px] rounded-full flex justify-center items-center text-[9px] content-center text-center pl-[5px] transition-all duration-100" }>{isChoosed ? "+" : "✓"}</span>
             </div>
             
         </div>

@@ -3,8 +3,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Lobster } from 'next/font/google'
 import "./globals.css";
-import GlobalLoading from "@/components/GlobalLoading";
 import type { Metadata } from 'next'
+import MainLayout from "@/components/MainLayout";
 
 export const metadata: Metadata = {
   title: "Foodgo - Order your favourite food",
@@ -41,9 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={`${geistSans.variable} ${geistMono.variable} ${lobster.variable} antialiased`}>
-        <GlobalLoading />
-        {children}
+        <MainLayout>
+          {children}
+        </MainLayout>
       </body>
     </html>
   );

@@ -1,7 +1,9 @@
+'use client'
 import Link from "next/link"
 import Image from "next/image"
 import Button from "@/components/Button"
-import { products } from '../data/products'
+import { useContext } from "react"
+import { AppContext } from "../context/AppContext"
 import ProductTitle from "@/components/ProductTitle"
 interface Product {
   id: number
@@ -13,6 +15,8 @@ interface Product {
 }
 
 export default function Main() {
+
+  const {products} = useContext(AppContext)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col relative items-center px-4">
