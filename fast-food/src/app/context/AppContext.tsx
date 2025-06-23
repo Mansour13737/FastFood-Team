@@ -1,21 +1,21 @@
 'use client'
 
 
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 type obg = {
-    id: number,
-    title: string,
+    id: number;
+    title: string;
     img: string;
 }
 
 type jsn = {
-    id: number,
-    title: string,
-    description: string,
-    price: number,
-    star: number,
-    image: string,
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    star: number;
+    image: string;
 }
 
 interface MyAppContext {
@@ -24,6 +24,17 @@ interface MyAppContext {
     products : jsn[];
     inputVal : number;
     setInputVal : (item : number) => void;
+    visaActive : boolean;
+    setVisaActive : Dispatch<SetStateAction<boolean>>;
+    masterActive : boolean;
+    setMasterActive : Dispatch<SetStateAction<boolean>>;
+    qtyNumber : number;
+    setQtyNumber : Dispatch<SetStateAction<number>>;
+    setId : Dispatch<SetStateAction<number | undefined>>;
+    finalPrice : number | undefined;
+    setFinalPrice : Dispatch<SetStateAction<number | undefined>>;
+    id: number|undefined;
+    fixPrice : () => void;
 }
 
 export const AppContext = createContext({} as MyAppContext)

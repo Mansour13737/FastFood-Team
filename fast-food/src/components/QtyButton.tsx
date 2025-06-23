@@ -1,20 +1,25 @@
 'use client'
-import { useState } from "react"
-export default function QtyButton() {
-const [qtyNumber,setQtyNumber]=useState<number>(0)
 
+import { AppContext } from "@/app/context/AppContext"
+import { useContext } from "react"
+
+export default function QtyButton() {
+
+  const {qtyNumber, setQtyNumber} = useContext(AppContext)
 
   const handleIncrement = () => {
-      setQtyNumber((prev) => prev + 1)
+    if (qtyNumber >= 4) {
+      return setQtyNumber(4)
+    }
+    setQtyNumber((prev) => prev + 1)
   }
   const handleDecrement = () => {
-    if (qtyNumber <1) {
-   return   setQtyNumber(0)
+    if (qtyNumber < 1) {
+      return setQtyNumber(0)
     }
-            setQtyNumber((prev) => prev - 1)
-
+    setQtyNumber((prev) => prev - 1)
   }
-    
+
   return (
     <div className="flex justify-center items-center gap-2 mx-auto  ">
       <button className='w-9 h-9  text-center bg-[#EF2A39] pb-[3px] text-white rounded-lg text-2xl font-bold shadow-md shadow-[#FF99004F]' onClick={handleDecrement}>-</button>

@@ -2,10 +2,18 @@
 
 import { AppContext } from "@/app/context/AppContext";
 import GlobalLoading from "./GlobalLoading";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface MyLayoutProps {
   children: React.ReactNode;
+}
+type jsn = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  star: number;
+  image: string;
 }
 export default function MainLayout({ children }: MyLayoutProps) {
 
@@ -88,11 +96,32 @@ export default function MainLayout({ children }: MyLayoutProps) {
     },
 
   ]
-  const [inputVal,setInputVal] = useState<number>(0)
+  const [inputVal, setInputVal] = useState<number>(0)
+  const [visaActive, setVisaActive] = useState<boolean>(false)
+  const [masterActive, setMasterActive] = useState<boolean>(false)
+  const [qtyNumber, setQtyNumber] = useState<number>(0)
+  const [id, setId] = useState<number | undefined>()
+  const product: jsn | undefined = products.find((p) => p.id === id)
+  const [finalPrice, setFinalPrice] = useState<number | undefined>()
 
+  function fixPrice () {
+    setFinalPrice(product?.price)
+  }  
+  
+  useEffect(() => {
+    if (visaActive === true) {
+      setMasterActive(false)
+    }
+  }, [visaActive])
+
+  useEffect(() => {
+    if (masterActive === true) {
+      setVisaActive(false)
+    }
+  }, [masterActive])
 
   return (
-    <AppContext.Provider value={{ customStaff, customStaff2, products,inputVal,setInputVal }}>
+    <AppContext.Provider value={{ customStaff, customStaff2, products, inputVal, setInputVal, visaActive, setVisaActive, masterActive, setMasterActive, qtyNumber, setQtyNumber, setId,id, finalPrice, setFinalPrice,fixPrice }}>
       <GlobalLoading />
       {children}
     </AppContext.Provider>

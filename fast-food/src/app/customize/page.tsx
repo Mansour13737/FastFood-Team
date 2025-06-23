@@ -9,7 +9,7 @@ import { AppContext } from '../context/AppContext'
 import Link from 'next/link'
 export default function Customize() {
 
-    const {customStaff,customStaff2} = useContext(AppContext)
+    const {customStaff,customStaff2,finalPrice} = useContext(AppContext)    
 
     return (
         <div className='w-full h-screen pt-[10px] pr-[15px] overflow-x-hidden'>
@@ -56,7 +56,7 @@ export default function Customize() {
                     </div>
                 </div>
             <div className='flex justify-center w-full items-center gap-3 mt-4 '>
-                <span className='text-[11px] text-white bg-[#EF2A39] w-fit font-bold rounded-lg p-3'>$18</span>
+                <span className='text-[11px] text-white bg-[#EF2A39] w-fit font-bold rounded-lg p-3'>${finalPrice}</span>
                 <Link href={'/payment'} className='w-full flex justify-center items-center'>
                 <OrderButton />
                 </Link>
