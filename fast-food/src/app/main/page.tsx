@@ -23,7 +23,7 @@ export default function Main() {
       <header className="w-full relative h-[120px]">
         <h2 className="font-normal font-lobster absolute text-[35px] text-[#3C2F2F] top-[28px] left-[19px]">Foodgo</h2>
         <p className="absolute tracking-tighter top-[89px] left-[19px] text-[15px] text-[#6A6A6A]">Order your favourite food <b className="text-[15px]">!</b></p>
-        <Image src={'/profile-photo.jpg'} width={70} height={70} alt="Pic" className="absolute top-[28px] right-[19px]" />
+        <Image src={'/girl.png'} width={70} height={70} alt="Pic" className="absolute top-[28px] right-[19px] rounded-2xl" />
       </header>
 
       <main className="w-full flex-1 flex flex-col">
@@ -52,7 +52,7 @@ export default function Main() {
             <Link href={'/'} className="w-fit h-fit relative z-[60]">
               <Image src={'/home.png'} alt="home" width={17} height={17} />
             </Link>
-            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+            <Link href={'/userProfile'} className="w-fit h-fit relative z-[60]">
               <Image src={'/user.png'} alt="home" width={17} height={17} />
             </Link>
           </div>
