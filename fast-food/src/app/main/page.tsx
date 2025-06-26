@@ -57,7 +57,7 @@ export default function Main() {
             </Link>
           </div>
           <div className="w-[38%] h-full flex justify-between items-center gap-10 px-[22px]">
-            <Link href={'/'} className="w-fit h-fit relative z-[60]">
+            <Link href={'/chat'} className="w-fit h-fit relative z-[60]">
               <Image src={'/comment.png'} alt="home" width={17} height={17} />
             </Link>
             <Link href={'/'} className="w-fit h-fit relative z-[60]">
