@@ -1,10 +1,20 @@
 import Button from "@/components/Button";
+import SearchButton from "@/components/SearchButton";
+import VectorLeft from "@/components/VectorLeft";
+import Image from "next/image";
 
 export default function UserProfile() {
     return (
-        <div className='bg-radial relative from-[#FF2A9D] to-[rgb(239,42,57)] h-screen w-full pt-[161px]'>
-            <div className="absolute bg-[url('/girl.png')] rounded-2xl w-[150px] bg-no-repeat bg-contain bg-center top-[68px] right-[50%] translate-x-[50%] h-[150px]"></div>
-            <div className="bg-white w-full h-screen rounded-[35px] flex flex-col  ">
+        <div className='bg-radial -z-2 relative from-[#FF2A9D] to-[rgb(239,42,57)] h-screen w-full pt-[161px]'>
+            <div className='flex justify-between items-center absolute top-6 w-full px-5 '>
+                <VectorLeft />
+                <SearchButton />
+            </div>
+            <Image src={'/products/1.png'} width={130} height={130} alt="pic" className="absolute top-15 -left-4 -z-1 opacity-50" />
+            <Image src={'/products/2.png'} width={130} height={130} alt="pic" className="absolute top-14 -right-4 -z-1 opacity-50" />
+
+            <div className="absolute z-3 bg-[url('/girl.png')] rounded-2xl w-[150px] bg-no-repeat bg-contain bg-center top-[68px] right-[50%] translate-x-[50%] h-[150px]"></div>
+            <div className="bg-white w-full  h-screen rounded-[35px] flex flex-col  ">
                 <div className=" gap-8 flex flex-col w-full justify-center items-center mt-[115px]">
                     <div className="relative w-[80%]">
                         <input
@@ -79,10 +89,16 @@ export default function UserProfile() {
                 <div className="border-[1px] rounded-[0.2px] w-[80%] mt-13 mx-auto border-[#E8E8E8]"></div>
                 <div className="flex justify-between w-[100%] mt-[50px] px-8">
                     <Button color="w-[43%] bg-[#3C2F2F] text-white font-semibold py-6">
-                        Edit Profile
+                        <div className="flex justify-between w-full">
+                            <span>Edit Profile</span>
+                            <Image src={'/edit.svg'} width={18} height={18} alt="pink" />
+                        </div>
                     </Button>
-                    <Button color="w-[43%] bg-white border-2 border-[#EF2A39] text-[#EF2A39] font-semibold py-[22px]">
-                        Log out
+                    <Button color="w-[43%] bg-white border-2 border-[#EF2A39] text-[#EF2A39] font-bold py-[22px]">
+                        <div className="flex gap-5 w-full">
+                            <span>Log Out</span>
+                            <Image src={'/sign-out.svg'} width={18} height={18} alt="pink" />
+                        </div>
                     </Button>
                 </div>
             </div>
