@@ -1,32 +1,41 @@
-
+'use client'
 import Image from 'next/image'
 import OrderButton from '@/components/OrderButton'
-import QtyButton from '@/components/QtyButton'
 import SearchButton from '@/components/SearchButton'
 import VectorLeft from '@/components/VectorLeft'
 import Link from 'next/link'
 import { products } from '@/components/DynamicPageProps'
 import TotalPrice from '@/components/TotalPrice'
+import { useEffect, useState, useMemo } from 'react'
+import { useParams } from 'next/navigation'
 
-type Props = {
-  params: Promise<{ id: string }>
-}
+export default function ProductPage() {
+  const params = useParams();
+  const id = Number(params.id);
+  const product = useMemo(() => products.find((p) => p.id === id), [id]);
 
-type jsn = {
-  id: number,
-  title: string,
-  description: string,
-  price: number,
-  star: number,
-  image: string,
-}
+  // Persisted states for spicy and portion
+  const [spicy, setSpicy] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(`spicy-${id}`)
+      return saved ? Number(saved) : 0
+    }
+    return 0
+  })
+  const [portion, setPortion] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(`portion-${id}`)
+      return saved ? Number(saved) : 1
+    }
+    return 1
+  })
 
-export default async function ProductPage({ params }: Props) {
-
-  const { id } = await params
-  const product: jsn | undefined = products.find((p) => p.id === Number(id))
-  console.log(product);
-  
+  useEffect(() => {
+    localStorage.setItem(`spicy-${id}`, spicy.toString())
+  }, [spicy, id])
+  useEffect(() => {
+    localStorage.setItem(`portion-${id}`, portion.toString())
+  }, [portion, id])
 
   if (!product) {
     return <p className="p-8 text-red-600">Product Not Found</p>
@@ -66,7 +75,14 @@ export default async function ProductPage({ params }: Props) {
           <div className='flex flex-col w-[40%] justify-center rounded-lg p-2'>
             <span className='text-[14px] text-[#3C2F2F] font-medium'>Spicy</span>
             <div>
-              <input type="range" className='w-full h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg appearance-none cursor-pointer custom-thumb' />
+              <input
+                type="range"
+                min={0}
+                max={4}
+                value={spicy}
+                onChange={e => setSpicy(Number(e.target.value))}
+                className='w-full h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg appearance-none cursor-pointer custom-thumb'
+              />
             </div>
             <div className='flex justify-between w-full'>
               <span className='text-[#1CC019] text-[12px] font-semibold'>Mild</span>
@@ -75,14 +91,20 @@ export default async function ProductPage({ params }: Props) {
           </div>
           <div className='flex flex-col w-[30%] h-[40px] justify-center gap-1 mr-2'>
             <span className='text-[14px] text-[#3C2F2F] font-medium justify-self-start'>Portion</span>
-            <QtyButton />
+            <div className="flex justify-center items-center gap-2 mx-auto">
+              <button className='w-9 h-9 text-center bg-[#EF2A39] pb-[3px] text-white rounded-lg text-2xl font-bold shadow-md shadow-[#FF99004F]'
+                onClick={() => setPortion(p => Math.max(1, p - 1))}>-</button>
+              <span>{portion}</span>
+              <button className='w-9 h-9 flex justify-center items-center pb-[3px] bg-[#EF2A39] text-white rounded-lg text-2xl font-bold shadow-md shadow-[#FF99004F]'
+                onClick={() => setPortion(p => Math.min(10, p + 1))}>+</button>
+            </div>
           </div>
         </div>
         {/* price & order */}
         <div>
           <div className='flex justify-center gap-3 items-center mb-4 '>
-            <TotalPrice id={Number(id)} />
-            <Link href={'/customize'} className='w-full'>
+            <TotalPrice id={id} portion={portion} />
+            <Link href={'/customize'} className='w-full' onClick={() => localStorage.setItem('lastProductId', id.toString())}>
               <OrderButton />
             </Link>
           </div>

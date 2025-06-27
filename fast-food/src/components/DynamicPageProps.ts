@@ -40,7 +40,54 @@ export const products : jsn[] = [
       star: 4.7,
       image: '/products/4.png',
     },
-
+    {
+      id: 5,
+      title: "Spicy Double Beef Burger",
+      description: "A fiery double beef burger with jalapenos, spicy sauce, and pepper jack cheese.",
+      price: 11.50,
+      star: 4.1,
+      image: '/products/1.png',
+    },
+    {
+      id: 6,
+      title: "Hot BBQ Chicken Wrap",
+      description: "Grilled chicken, hot BBQ sauce, and fresh veggies wrapped in a soft tortilla.",
+      price: 10.20,
+      star: 4.0,
+      image: '/products/2.png',
+    },
+    {
+      id: 7,
+      title: "Combo Family Meal",
+      description: "A family-sized combo with burgers, fries, and drinks for everyone.",
+      price: 25.99,
+      star: 4.8,
+      image: '/products/3.png',
+    },
+    {
+      id: 8,
+      title: "Spicy Veggie Delight",
+      description: "A spicy vegetarian burger with grilled veggies and hot sauce.",
+      price: 9.99,
+      star: 4.2,
+      image: '/products/4.png',
+    },
+    {
+      id: 9,
+      title: "Hot & Crispy Fish Burger",
+      description: "Crispy fried fish fillet with hot sauce and lettuce in a fresh bun.",
+      price: 13.50,
+      star: 4.4,
+      image: '/products/1.png',
+    },
+    {
+      id: 10,
+      title: "Mini Combo Snack Box",
+      description: "A mini combo with sliders, fries, and a drink. Perfect for a quick bite!",
+      price: 7.99,
+      star: 3.9,
+      image: '/products/2.png',
+    },
   ]
 
 

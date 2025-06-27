@@ -5,16 +5,16 @@ import Image from "next/image";
 
 export default function UserProfile() {
     return (
-        <div className='bg-radial -z-2 relative from-[#FF2A9D] to-[rgb(239,42,57)] h-screen w-full pt-[161px]'>
-            <div className='flex justify-between items-center absolute top-6 w-full px-5 '>
+        <div className='bg-radial relative z-10 from-[#FF2A9D] to-[rgb(239,42,57)] h-screen w-full pt-[161px]'>
+            <div className='flex z-10 justify-between items-center absolute top-6 w-full px-5 '>
                 <VectorLeft />
                 <SearchButton />
             </div>
-            <Image src={'/products/1.png'} width={130} height={130} alt="pic" className="absolute top-15 -left-4 -z-1 opacity-50" />
-            <Image src={'/products/2.png'} width={130} height={130} alt="pic" className="absolute top-14 -right-4 -z-1 opacity-50" />
+            <Image src={'/products/1.png'} id="food-1" width={130} height={130} alt="pic" className="absolute top-1 scale-150 -left-4 z-0 opacity-50" />
+            <Image src={'/products/2.png'} id="food-2" width={130} height={130} alt="pic" className="absolute top-9 -right-4 z-0 opacity-50" />
 
-            <div className="absolute z-3 bg-[url('/girl.png')] rounded-2xl w-[150px] bg-no-repeat bg-contain bg-center top-[68px] right-[50%] translate-x-[50%] h-[150px]"></div>
-            <div className="bg-white w-full  h-screen rounded-[35px] flex flex-col  ">
+            <div id="girl" className="absolute z-30 bg-[url('/girl.png')] rounded-2xl w-[150px] bg-no-repeat bg-contain bg-center top-[68px] right-[50%] translate-x-[50%] h-[150px]"></div>
+            <div id="form" className="bg-white w-full z-20 h-screen rounded-[35px] flex flex-col  ">
                 <div className=" gap-8 flex flex-col w-full justify-center items-center mt-[115px]">
                     <div className="relative w-[80%]">
                         <input

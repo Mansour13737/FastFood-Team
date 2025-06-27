@@ -2,7 +2,8 @@
 
 import { AppContext } from "@/app/context/AppContext";
 import GlobalLoading from "./GlobalLoading";
-import { useEffect, useState } from "react";
+import { Dispatch, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
+import { Filter } from "lucide";
 
 interface MyLayoutProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ type jsn = {
   price: number;
   star: number;
   image: string;
+  isLiked: boolean
 }
 export default function MainLayout({ children }: MyLayoutProps) {
 
@@ -69,6 +71,8 @@ export default function MainLayout({ children }: MyLayoutProps) {
       price: 8.99,
       star: 3.5,
       image: '/products/1.png',
+      isLiked: false,
+      category: 'combos',
     },
     {
       id: 2,
@@ -77,6 +81,8 @@ export default function MainLayout({ children }: MyLayoutProps) {
       price: 9.24,
       star: 3.8,
       image: '/products/2.png',
+      isLiked: false,
+      category: 'spicy',
     },
     {
       id: 3,
@@ -85,6 +91,8 @@ export default function MainLayout({ children }: MyLayoutProps) {
       price: 10.90,
       star: 4.3,
       image: '/products/3.png',
+      isLiked: false,
+      category: 'hot',
     },
     {
       id: 4,
@@ -93,9 +101,72 @@ export default function MainLayout({ children }: MyLayoutProps) {
       price: 12.32,
       star: 4.7,
       image: '/products/4.png',
+      isLiked: false,
+      category: 'combos',
     },
-
+    // New random products for all categories
+    {
+      id: 5,
+      title: "Spicy Double Beef Burger",
+      description: "A fiery double beef burger with jalapenos, spicy sauce, and pepper jack cheese.",
+      price: 11.50,
+      star: 4.1,
+      image: '/products/1.png',
+      isLiked: false,
+      category: 'spicy',
+    },
+    {
+      id: 6,
+      title: "Hot BBQ Chicken Wrap",
+      description: "Grilled chicken, hot BBQ sauce, and fresh veggies wrapped in a soft tortilla.",
+      price: 10.20,
+      star: 4.0,
+      image: '/products/2.png',
+      isLiked: false,
+      category: 'hot',
+    },
+    {
+      id: 7,
+      title: "Combo Family Meal",
+      description: "A family-sized combo with burgers, fries, and drinks for everyone.",
+      price: 25.99,
+      star: 4.8,
+      image: '/products/3.png',
+      isLiked: false,
+      category: 'combos',
+    },
+    {
+      id: 8,
+      title: "Spicy Veggie Delight",
+      description: "A spicy vegetarian burger with grilled veggies and hot sauce.",
+      price: 9.99,
+      star: 4.2,
+      image: '/products/4.png',
+      isLiked: false,
+      category: 'spicy',
+    },
+    {
+      id: 9,
+      title: "Hot & Crispy Fish Burger",
+      description: "Crispy fried fish fillet with hot sauce and lettuce in a fresh bun.",
+      price: 13.50,
+      star: 4.4,
+      image: '/products/1.png',
+      isLiked: false,
+      category: 'hot',
+    },
+    {
+      id: 10,
+      title: "Mini Combo Snack Box",
+      description: "A mini combo with sliders, fries, and a drink. Perfect for a quick bite!",
+      price: 7.99,
+      star: 3.9,
+      image: '/products/2.png',
+      isLiked: false,
+      category: 'combos',
+    },
   ]
+
   const [inputVal, setInputVal] = useState<number>(0)
   const [visaActive, setVisaActive] = useState<boolean>(false)
   const [masterActive, setMasterActive] = useState<boolean>(false)
@@ -103,11 +174,33 @@ export default function MainLayout({ children }: MyLayoutProps) {
   const [id, setId] = useState<number | undefined>()
   const product: jsn | undefined = products.find((p) => p.id === id)
   const [finalPrice, setFinalPrice] = useState<number | undefined>()
+  const [liked, setLiked] = useState<string>("bg-[url('/heart.svg')]")
+  const [productsState, setProductsState] = useState(products);
 
-  function fixPrice () {
+  // Load liked products from localStorage on mount
+  useEffect(() => {
+    const likedIds = JSON.parse(localStorage.getItem('likedProducts') || '[]');
+    setProductsState(prev => prev.map(p => ({ ...p, isLiked: likedIds.includes(p.id) })));
+  }, []);
+
+  // handleLike updates both state and localStorage
+  function handleLike(info: jsn): undefined {
+    setProductsState(prev => {
+      const updated = prev.map(item =>
+        item.id === info.id ? { ...item, isLiked: !item.isLiked } : item
+      );
+      // Update localStorage
+      const likedIds = updated.filter(p => p.isLiked).map(p => p.id);
+      localStorage.setItem('likedProducts', JSON.stringify(likedIds));
+      return updated;
+    });
+    return undefined;
+  }
+
+  function fixPrice() {
     setFinalPrice(product?.price)
-  }  
-  
+  }
+
   useEffect(() => {
     if (visaActive === true) {
       setMasterActive(false)
@@ -121,7 +214,7 @@ export default function MainLayout({ children }: MyLayoutProps) {
   }, [masterActive])
 
   return (
-    <AppContext.Provider value={{ customStaff, customStaff2, products, inputVal, setInputVal, visaActive, setVisaActive, masterActive, setMasterActive, qtyNumber, setQtyNumber, setId,id, finalPrice, setFinalPrice,fixPrice }}>
+    <AppContext.Provider value={{ liked, setLiked, handleLike, customStaff, customStaff2, products: productsState, inputVal, setInputVal, visaActive, setVisaActive, masterActive, setMasterActive, qtyNumber, setQtyNumber, setId, id, finalPrice, setFinalPrice, fixPrice }}>
       <GlobalLoading />
       {children}
     </AppContext.Provider>
