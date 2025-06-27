@@ -4,36 +4,29 @@ import MasterCard from "@/components/MasterCard"
 import SearchButton from "@/components/SearchButton"
 import VectorLeft from "@/components/VectorLeft"
 import Visa from "@/components/Visa"
-import { useContext, useEffect, useMemo, useState } from "react"
-import { AppContext } from "../context/AppContext"
+import { useMemo, useState, useEffect } from "react"
 import Link from "next/link"
 import { products } from '@/components/DynamicPageProps'
 
 export default function Payment() {
 
-  const { finalPrice } = useContext(AppContext)
-
   // Get last visited product id
-  const lastId = useMemo(() => Number(localStorage.getItem('lastProductId') || '1'), [])
+  const [lastId, setLastId] = useState(1)
+  const [portion, setPortion] = useState(1)
   const product = useMemo(() => products.find(p => p.id === lastId), [lastId])
-  const [spicy, setSpicy] = useState(() => {
+
+  useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(`spicy-${lastId}`)
-      return saved ? Number(saved) : 0
+      const id = Number(localStorage.getItem('lastProductId') || '1')
+      setLastId(id)
+      const savedPortion = localStorage.getItem(`portion-${id}`)
+      setPortion(savedPortion ? Number(savedPortion) : 1)
     }
-    return 0
-  })
-  const [portion, setPortion] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(`portion-${lastId}`)
-      return saved ? Number(saved) : 1
-    }
-    return 1
-  })
+  }, [])
   // Price calculation
   const price = useMemo(() => {
     if (!product) return 0
-    let p = product.price * (1 + 0.3 * (portion - 1))
+    const p = product.price * (1 + 0.3 * (portion - 1))
     return Math.round(p * 100) / 100
   }, [product, portion])
   // Tax and fare

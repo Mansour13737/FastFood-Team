@@ -1,6 +1,5 @@
 'use client'
 
-import QtyButton from '@/components/QtyButton'
 import Image from "next/image"
 import CustomStuff from '@/components/CustomStuff'
 import OrderButton from '@/components/OrderButton'
@@ -12,32 +11,35 @@ import { products } from '@/components/DynamicPageProps'
 export default function Customize() {
     const {customStaff,customStaff2} = useContext(AppContext)
     // Assume last visited product id is stored in localStorage
-    const lastId = useMemo(() => Number(localStorage.getItem('lastProductId') || '1'), [])
+    const [lastId, setLastId] = useState(1)
+    const [spicy, setSpicy] = useState(0)
+    const [portion, setPortion] = useState(1)
     const product = useMemo(() => products.find(p => p.id === lastId), [lastId])
-    const [spicy, setSpicy] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem(`spicy-${lastId}`)
-            return saved ? Number(saved) : 0
-        }
-        return 0
-    })
-    const [portion, setPortion] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem(`portion-${lastId}`)
-            return saved ? Number(saved) : 1
-        }
-        return 1
-    })
+
     useEffect(() => {
-        localStorage.setItem(`spicy-${lastId}`, spicy.toString())
+        if (typeof window !== 'undefined') {
+            const id = Number(localStorage.getItem('lastProductId') || '1')
+            setLastId(id)
+            const savedSpicy = localStorage.getItem(`spicy-${id}`)
+            const savedPortion = localStorage.getItem(`portion-${id}`)
+            setSpicy(savedSpicy ? Number(savedSpicy) : 0)
+            setPortion(savedPortion ? Number(savedPortion) : 1)
+        }
+    }, [])
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(`spicy-${lastId}`, spicy.toString())
+        }
     }, [spicy, lastId])
     useEffect(() => {
-        localStorage.setItem(`portion-${lastId}`, portion.toString())
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(`portion-${lastId}`, portion.toString())
+        }
     }, [portion, lastId])
     // Price calculation (same as product page)
     const price = useMemo(() => {
         if (!product) return 0
-        let p = product.price * (1 + 0.3 * (portion - 1))
+        const p = product.price * (1 + 0.3 * (portion - 1))
         return Math.round(p * 100) / 100
     }, [product, portion])
 

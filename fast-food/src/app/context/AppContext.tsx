@@ -1,7 +1,7 @@
 'use client'
 
 
-import { createContext, Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 type obg = {
     id: number;

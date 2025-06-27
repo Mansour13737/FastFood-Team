@@ -2,7 +2,7 @@
 import { AppContext } from "@/app/context/AppContext"
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 
 
 
@@ -14,12 +14,13 @@ interface Product {
     star: number
     image: string
     isLiked: boolean
+    category: string
 }
 
 
 export default function ProductTitle({ info }: { info: Product }) {
 
-    const {handleLike,liked} = useContext(AppContext)
+    const {handleLike} = useContext(AppContext)
 
 
 

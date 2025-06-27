@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import Button from "@/components/Button"
 import { useContext, useState } from "react"
 import { AppContext } from "../context/AppContext"
 import ProductTitle from "@/components/ProductTitle"
@@ -13,6 +12,7 @@ interface Product {
   star: number
   image: string
   isLiked : boolean
+  category: string
 }
 
 export default function Main() {

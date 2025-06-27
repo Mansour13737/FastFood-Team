@@ -2,8 +2,7 @@
 
 import { AppContext } from "@/app/context/AppContext";
 import GlobalLoading from "./GlobalLoading";
-import { Dispatch, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
-import { Filter } from "lucide";
+import { useEffect, useState } from "react";
 
 interface MyLayoutProps {
   children: React.ReactNode;
