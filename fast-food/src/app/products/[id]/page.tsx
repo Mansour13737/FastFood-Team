@@ -42,7 +42,7 @@ export default function ProductPage() {
   }
 
   return (
-    <main className="container mx-auto p-4">
+    <main className="container mx-auto p-4 lg:p-8 xl:p-12 lg:max-w-6xl">
       <div className='flex justify-between items-center'>
         <VectorLeft />
         <SearchButton />

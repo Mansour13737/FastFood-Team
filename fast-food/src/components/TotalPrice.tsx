@@ -18,8 +18,8 @@ export default function TotalPrice({ id, portion = 1 }: { id: number, portion?: 
     }, [id, setId])
 
     return (
-        <div>
-            <span  className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3'>${price}</span>
+        <div className="lg:flex lg:justify-center">
+            <span  className='text-[11px] text-white bg-[#EF2A39] font-bold rounded-lg py-3 px-3 lg:text-[18px] lg:py-4 lg:px-6 lg:rounded-xl lg:font-bold xl:text-[20px] xl:py-5 xl:px-8'>${price}</span>
         </div>
     )
 }
